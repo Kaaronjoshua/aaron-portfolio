@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Aaron Kambhampati — open to work, collaborations, and research opportunities in Data Science and AI.">
+  <title>Contact — Aaron Kambhampati</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"/>
+  <link rel="stylesheet" href="/styles/styles.css">
+
+  <style>
+    body { background: #080808; }
+
+    .header-bar {
+      background: #080808;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .header-bar .left,
+    .header-bar a.left,
+    .header-bar .right { color: rgba(255,255,255,0.35); }
+    .top-nav a          { color: rgba(255,255,255,0.5); }
+    .top-nav a.active   { color: #fff; border-bottom-color: #fff; }
+    .top-nav a:hover    { color: #fff; opacity: 1; }
+
+    .footer-strip {
+      background: #080808;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.2);
+    }
+    .social-icons a       { color: rgba(255,255,255,0.25); }
+    .social-icons a:hover { color: #fff; opacity: 1; }
+
+    @media (max-width: 768px) {
+      .nav-toggle { color: rgba(255,255,255,0.6); }
+      .top-nav {
+        background: #111;
+        border-bottom-color: rgba(255,255,255,0.08);
+      }
+      .top-nav a          { border-bottom-color: rgba(255,255,255,0.06); }
+      .top-nav a.active   { border-left-color: #fff; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <%- include("partials/header", { page: "contact" }) %>
+
+  <main class="page-content contact-page">
+
+    <section class="contact-hero">
+
+      <!-- ===================== LEFT: identity + channels ===================== -->
+      <div class="contact-left">
+        <div class="contact-left-inner">
+
+          <div class="contact-availability">
+            <span class="avail-dot"></span>
+            <span>Available for work &amp; collaborations</span>
+          </div>
+
+          <h1 class="contact-title">Let's<br>talk.</h1>
+
+          <div class="contact-time-wrap">
+            <span class="ct-label">My local time</span>
+            <span class="ct-value" id="istTime">— : —</span>
+            <span class="ct-zone">IST · UTC+5:30</span>
+          </div>
+
+          <ul class="contact-channels">
+            <li>
+              <a href="mailto:kaaronjoshua@gmail.com?subject=Hey%20Aaron!" class="ch-link">
+                <span class="ch-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span class="ch-body">
+                  <span class="ch-label">Email</span>
+                  <span class="ch-value">kaaronjoshua@gmail.com</span>
+                </span>
+                <span class="ch-arrow">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/aaronkambhampati/" target="_blank" rel="noopener" class="ch-link">
+                <span class="ch-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                <span class="ch-body">
+                  <span class="ch-label">LinkedIn</span>
+                  <span class="ch-value">Aaron Kambhampati</span>
+                </span>
+                <span class="ch-arrow">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/aar_1901/" target="_blank" rel="noopener" class="ch-link">
+                <span class="ch-icon"><i class="fa-brands fa-instagram"></i></span>
+                <span class="ch-body">
+                  <span class="ch-label">Instagram</span>
+                  <span class="ch-value">@aar_1901</span>
+                </span>
+                <span class="ch-arrow">↗</span>
+              </a>
+            </li>
+            <li>
+              <span class="ch-link ch-link--static">
+                <span class="ch-icon"><i class="fa-solid fa-location-dot"></i></span>
+                <span class="ch-body">
+                  <span class="ch-label">Location</span>
+                  <span class="ch-value">Vijayawada, Andhra Pradesh, India</span>
+                </span>
+              </span>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+      <!-- ===================== RIGHT: form ===================== -->
+      <div class="contact-right">
+
+        <!-- Form state -->
+        <div class="cf-wrap" id="cfWrap">
+          <p class="cf-eyebrow">Send a message</p>
+          <p class="cf-sub">Drop a line — I usually reply within 24 hours.</p>
+
+          <form class="cf-form" id="cfForm">
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cfName">Name</label>
+                <input id="cfName" type="text" name="name" placeholder="Your name" autocomplete="name" required>
+              </div>
+              <div class="cf-field">
+                <label for="cfEmail">Email</label>
+                <input id="cfEmail" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="cf-field">
+              <label for="cfSubject">Subject</label>
+              <input id="cfSubject" type="text" name="subject" placeholder="What's this about?" required>
+            </div>
+
+            <div class="cf-field cf-field--textarea">
+              <label for="cfMessage">Message</label>
+              <textarea id="cfMessage" name="message" rows="6" maxlength="600"
+                        placeholder="Tell me what you're working on, or just say hi." required></textarea>
+              <span class="cf-counter" id="cfCounter">0 / 600</span>
+            </div>
+
+            <button type="submit" class="cf-btn">
+              <span>Send message</span>
+              <span class="cf-btn-arrow">→</span>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- Success state -->
+        <div class="cf-success" id="cfSuccess">
+          <div class="cf-success-icon">✦</div>
+          <h3>Message sent.</h3>
+          <p>I received your message and will get back to you soon.</p>
+          <button class="cf-back-btn" id="cfBackBtn">Send another →</button>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <%- include("partials/footer") %>
+
+  <script src="/JS/main.js"></script>
+  <script>
+    // ── Live IST clock ──
+    function updateClock() {
+      const t = new Date().toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: true
+      });
+      document.getElementById('istTime').textContent = t;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // ── Textarea character counter ──
+    const msgEl = document.getElementById('cfMessage');
+    const cntEl = document.getElementById('cfCounter');
+    msgEl.addEventListener('input', () => {
+      cntEl.textContent = msgEl.value.length + ' / 600';
+    });
+
+    // ── Form submit ──
+    const form      = document.getElementById('cfForm');
+    const cfWrap    = document.getElementById('cfWrap');
+    const cfSuccess = document.getElementById('cfSuccess');
+    const cfBackBtn = document.getElementById('cfBackBtn');
+    const submitBtn = form.querySelector('.cf-btn');
+    const submitSpan = submitBtn.querySelector('span');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitSpan.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:    form.name.value.trim(),
+            email:   form.email.value.trim(),
+            subject: form.subject.value.trim(),
+            message: form.message.value.trim()
+          })
+        });
+        const json = await res.json();
+        if (json.success) {
+          cfWrap.classList.add('cf-hidden');
+          cfSuccess.classList.add('cf-visible');
+        } else {
+          alert('Something went wrong. Please email me directly at kaaronjoshua@gmail.com');
+        }
+      } catch {
+        alert('Network error. Please try again or email me directly.');
+      } finally {
+        submitBtn.disabled = false;
+        submitSpan.textContent = 'Send message';
+      }
+    });
+
+    cfBackBtn.addEventListener('click', () => {
+      cfSuccess.classList.remove('cf-visible');
+      cfWrap.classList.remove('cf-hidden');
+      form.reset();
+      cntEl.textContent = '0 / 600';
+    });
+  </script>
+
+</body>
+</html>

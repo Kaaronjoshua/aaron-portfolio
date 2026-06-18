@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Aaron Kambhampati — his background in Data Science and AI, education at KL University, and the skills he brings to every project.">
+  <title>About — Aaron Kambhampati</title>
+
+  <!-- Font Awesome -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER PARTIAL -->
+  <%- include("partials/header", { page: "about" }) %>
+
+  <!-- SCROLLABLE MIDDLE CONTENT -->
+  <main class="page-content about-page">
+
+    <!-- ========================= INTRO SECTION ========================= -->
+    <section class="hero hero-about">
+
+      <div class="about-left reveal-left">
+        <p class="about-intro-label">Introduction</p>
+
+        <h1 class="about-title">
+          Hello, I'm <br>
+          Aaron Joshua!
+        </h1>
+
+        <p class="about-text">
+          I’m a Data Scientist & AI Engineer who loves turning messy real-world
+          problems into clean, working systems — from gaze-based interaction and
+          ad analytics to LLM-powered tools for learning and productivity.
+          I focus on building things that are not just smart, but actually usable.
+        </p>
+
+        <div class="about-highlights">
+          <div>
+            <h3>What I do</h3>
+            <ul>
+              <li>Computer Vision & Gaze Estimation</li>
+              <li>LLMs, RAG & AI tooling</li>
+              <li>End-to-end ML pipelines</li>
+              <li>Interactive frontends & prototypes</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Currently</h3>
+            <ul>
+              <li>Building vision-AI products (StreetScience / Scignia)</li>
+              <li>Designing assistant tools for learning & productivity</li>
+              <li>Sharpening full-stack + backend skills (Node, Express)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right reveal-right">
+        <img class="parallax" src="/images/Stance_1.jpg" alt="Aaron working">
+      </div>
+    </section>
+
+
+
+    <!-- ========================= CARE SECTION ========================= -->
+   
+    <section class="care-section">
+
+    <!-- LEFT: Image -->
+    <div class="care-left reveal-left">
+        <img class="parallax" src="/images/Stance_4.png" alt="Aaron thinking">
+    </div>
+
+    <!-- RIGHT: Text -->
+    <div class="care-right reveal-right">
+
+        <h2 class="care-title">What I care about</h2>
+
+        <p class="care-desc">
+        I like building systems that can leave the notebook and survive in the real world:
+        resilient, measurable, and clean enough that future-me won’t hate present-me.
+        Strong focus on clarity, debuggability, and shipping things that actually get used.
+        </p>
+
+        <div class="care-columns">
+        <div>
+            <h3>Tech I use a lot</h3>
+            <ul class="icon-list">
+            <li>
+                <i class="fa-solid fa-code"></i>
+                Python, NumPy, Pandas, PyTorch
+            </li>
+            <li>
+                <i class="fa-solid fa-microchip"></i>
+                ONNX, Hailo toolchain, OpenCV
+            </li>
+            <li>
+                <i class="fa-solid fa-server"></i>
+                Node.js, Express, EJS
+            </li>
+            <li>
+                <i class="fa-solid fa-database"></i>
+                SQL, Power BI, analytics thinking
+            </li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Outside of work</h3>
+            <ul class="icon-list">
+            <li>
+                <i class="fa-solid fa-guitar"></i>
+                Swimming, guitar, and podcasts over books
+            </li>
+            <li>
+                <i class="fa-solid fa-lightbulb"></i>
+                Breaking down complex topics into simple visuals
+            </li>
+            <li>
+                <i class="fa-solid fa-universal-access"></i>
+                Experimenting with assistive / accessibility tech
+            </li>
+            </ul>
+        </div>
+        </div>
+
+    </div>
+    </section>
+
+
+
+    <!-- ========================= EDUCATION SECTION ========================= -->
+    <section class="education-section">
+
+      <h2 class="education-title reveal">Education</h2>
+
+      <div class="education-cards">
+
+        <!-- CARD 1 -->
+        <div class="edu-card reveal">
+          <div class="edu-logo-wrap">
+            <img src="/images/EDU_1.jpg" alt="Education Image 1">
+          </div>
+          <h3>Schooling</h3>
+          <p>Monforts - NSM Public School - CBSE</p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="edu-card reveal">
+          <div class="edu-logo-wrap">
+            <img src="/images/EDU_2.png" alt="Education Image 2">
+          </div>
+          <h3>Intermediate</h3>
+          <p>MPC - Nr's Brilliant - AP State</p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="edu-card reveal">
+          <div class="edu-logo-wrap">
+            <img src="/images/EDU_3.jpeg" alt="Education Image 3">
+          </div>
+          <h3>Engineering</h3>
+          <p>Bachelors of Technology - KL University - Aritificial Intelligence and Data Science</p>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- FOOTER PARTIAL -->
+  <%- include("partials/footer") %>
+
+  <script src="/JS/main.js"></script>
+</body>
+</html>

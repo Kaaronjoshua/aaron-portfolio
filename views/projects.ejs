@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Aaron Kambhampati's project portfolio — spanning Computer Vision, NLP, Healthcare Analytics, Supply Chain, Finance, and more.">
+  <title>Projects — Aaron Kambhampati</title>
+
+  <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+
+  <!-- ================= STATIC HEADER ================= -->
+  <%- include("partials/header", { page: "projects" }) %>
+
+  <!-- ================= PAGE CONTENT ================= -->
+  <main class="page-content projects-page">
+
+    <!-- ================= HERO ================= -->
+    <section class="projects-hero">
+      <div class="projects-left reveal-left">
+        <img
+          class="projects-hero-image parallax"
+          src="/images/Pro_1.avif"
+          alt="Working on projects"
+        />
+      </div>
+
+      <div class="projects-right reveal-right">
+        <p class="projects-label">Selected Work</p>
+
+        <h1 class="projects-title">
+          <span>Project</span>
+          <span>Portfolio</span>
+        </h1>
+
+        <p class="projects-lead">
+          A mix of vision-AI systems, data products, and LLM-powered tools —
+          built end-to-end from messy raw data to clean, reliable experiences.
+          These are the projects I’m most proud of shipping and maintaining.
+        </p>
+
+        <div class="projects-meta">
+          <div>
+            <h3>What I focus on</h3>
+            <ul>
+              <li>Real-time computer-vision & gaze analytics</li>
+              <li>LLM workflows for learning & productivity</li>
+              <li>Clean, debuggable, production-ready code</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Typical stack</h3>
+            <ul>
+              <li>Python, PyTorch / ONNX, OpenCV</li>
+              <li>Node.js, Express, EJS frontends</li>
+              <li>PostgreSQL / MySQL, Power BI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECT DOMAINS TRANSITION ================= -->
+    <section class="project-domain-transition">
+      <h1>PROJECT DOMAINS</h1>
+    </section>
+
+    <!-- ================= DOMAIN SCENE (PINNED CINEMATIC TIMELINE) ================= -->
+    <section class="domain-scene" id="domainScene">
+      <div class="domain-scene__sticky">
+        <div class="domain-scene__wrap">
+
+          <!-- ================= BACK LAYER : IDP ================= -->
+          <div class="domain-scene__idp" id="idpLayer">
+            <section class="idp-layout idp-layout--forgery">
+
+              <!-- TOP BAR -->
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Finance Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">IDP System</span>
+                </div>
+                <div class="idp-topbar-right">2026</div>
+              </div>
+
+              <!-- MAIN GRID -->
+              <div class="idp-grid">
+
+                <!-- LEFT -->
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    IDP
+                    <span class="idp-heading-sub">Document Intelligence</span>
+                  </h2>
+
+                  <p class="idp-para">
+                    Built an end-to-end Intelligent Document Processing pipeline:
+                    classify → extract → validate → review, with confidence scoring
+                    and audit logs for high accuracy.
+                  </p>
+
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Scope</h4>
+                      <p>Invoices, KYC, bank statements, policy docs.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>OCR + layout parsing + extraction + rules + HITL.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Reduced manual ops, faster TAT, fewer errors.</p>
+                    </div>
+                  </div>
+
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Finance • Automation</span>
+                    <span>hello@yourmail.com</span>
+                  </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/IDP_1.png" alt="IDP preview top">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/IDP_2.png" alt="IDP preview bottom">
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </div>
+
+          <!-- ================= FRONT LAYER : DOMAIN WORDS ================= -->
+          <div class="domain-scene__words" id="wordsGroup">
+            <span class="domain-word" id="wFinance">FINANCE</span>
+            <span class="domain-word" id="wHealth">HEALTH</span>
+            <span class="domain-word" id="wSchain">Supply Chain Management</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HORIZONTAL PROJECT SCROLL ================= -->
+    <section class="hscroll-section" id="financeHscroll">
+      <div class="hscroll-sticky">
+        <div class="hscroll-track" id="financeTrack">
+
+          <!-- SLIDE 1: Gaze Estimation – Health -->
+          <div class="hscroll-slide">
+            <section class="idp-layout">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Finance</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Adhaar Masking</span>
+                </div>
+                <div class="idp-topbar-right">2024</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Adhaar Masking
+                    <span class="idp-heading-sub">Handling Confidentiality</span>
+                  </h2>
+                  <p class="idp-para">
+                    Real-time Adhaar Masking using multiple OCR Tools like AWS Textract, 
+                    Google Documnt AI, Pytesseract. The algorithm behind an Adhaar number
+                    has a pattern, detecting layouts and tabels in a document, validated 
+                    1000's of document masking, mainted atmost confidentiality.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Input</h4>
+                      <p>A document that may contain an Adhaar number</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>Document → OCR → Layout Handling → Pattern Recogniton → Masking.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Since Aadhaar numbers are PII, unauthorized storage is a cognizable crime. 
+                        This software masks numbers to protect user privacy.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Finance • Accessibility</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Adhaar_1.png" alt="Adhaar masking preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Adhaar_2.png" alt="Adhaar masking result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 2: Ad Analytics – Ad-Tech -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--forgery">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Finance</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Life Insurance</span>
+                </div>
+                <div class="idp-topbar-right">2024</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Smart 
+                    <span class="idp-heading-sub">Underwriter Co-pilot</span>
+                  </h2>
+                  <p class="idp-para">
+                    I worked on the medical underwriting component of an insurance risk assessment system, 
+                    where I developed an AI framework combining a Vision Transformer (ViT) and Claude 
+                    Sonnet 3 to analyze medical documents and diagnostic images such as ECGs, TMT reports, 
+                    and chest X-rays. The solution assists underwriters in evaluating applicant health risks 
+                    by identifying medical conditions and generating structured assessments, achieving an 
+                    AUC-ROC score of 0.99 on validation data.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Scale</h4>
+                      <p>Thousands of events per day.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Stack</h4>
+                      <p>Python, AWS Bedrock, Googles vision Transformer, collab, Fast API, ML, Computer vision,
+                        Prompt Engineering, LLM's.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Reduced reporting time by 80%, sharper spend decisions.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Finance • SUW</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/SUW_1.png" alt="Smart underwriter preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/SUW_2.png" alt="Smart underwriter result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 3: RAG Learning Assistant – LLM -->
+          <div class="hscroll-slide">
+            <section class="idp-layout">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Finance Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">GDP</span>
+                </div>
+                <div class="idp-topbar-right">2025</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    GDP
+                    <span class="idp-heading-sub">Analysis</span>
+                  </h2>
+                  <p class="idp-para">
+                    GDP Forecasting & Economic Trend Analysis – Developed an end-to-end time series forecasting 
+                    pipeline using historical GDP and macroeconomic indicators as inputs. The workflow included 
+                    data cleaning, missing value treatment, stationarity testing (ADF), feature engineering, trend 
+                    and seasonality analysis, followed by model development using both SARIMA (statistical baseline) 
+                    and LSTM (deep learning) approaches. Models were evaluated using forecasting error metrics and used 
+                    to generate future GDP projections, enabling analysis of long-term economic growth patterns and supporting
+                     data-driven policy and investment decision-making.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Input</h4>
+                      <p>Historical GDP data along with macroeconomic indicators such as inflation, unemployment rate, 
+                        interest rates, population growth, and trade statistics.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p> Economic Data → Preprocessing & Feature Engineering → SARIMA/LSTM Modeling → Forecast Generation 
+                        → Economic Insights.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Generated accurate GDP forecasts and economic trend insights to support strategic planning, policy 
+                        evaluation, and investment decision-making.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>LLM • Education</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/GDP_1.png" alt="GDP forecast preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/GDP_2.png" alt="GDP trend analysis">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 4: Vision Pipeline – CV / Edge AI -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--forgery">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Computer Vision Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Vision Pipeline</span>
+                </div>
+                <div class="idp-topbar-right">2026</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Vision Analytics
+                    <span class="idp-heading-sub">Patented</span>
+                  </h2>
+                  <p class="idp-para">
+                    Developed an edge AI-based audience analytics platform for digital advertising screens that measures 
+                    viewer demographics and engagement in real time. The system processes camera feeds on a Raspberry Pi 5 
+                    using computer vision models for face detection, tracking, age/gender estimation, and gaze analysis to 
+                    determine audience attention levels. Aggregated analytics are presented through dashboards, enabling 
+                    advertisers and media owners to understand audience composition, measure campaign effectiveness, and 
+                    optimize advertising placements while maintaining privacy by avoiding personal identification.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Hardware</h4>
+                      <p>Hailo-8, Raspberry Pi, standard webcams.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>Camera Feed → YuNet Face Detection → Face Tracking → Age/Gender Estimation → FaceMesh & Gaze Analysis → Audience Analytics Aggregation → 
+                        Real-Time Dashboard & Insights.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Enabled privacy-conscious audience measurement for digital advertising by providing real-time demographic and attention analytics, helping advertisers 
+                        improve campaign performance and optimize media spending<5W power draw.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>CV • Edge AI</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/vision_analytics_1.png" alt="Vision analytics preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Vision_analytics_2.png" alt="Vision analytics dashboard">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HEALTH DOMAIN SCENE ================= -->
+    <section class="domain-scene" id="healthScene">
+      <div class="domain-scene__sticky">
+        <div class="domain-scene__wrap">
+
+          <!-- BACK LAYER: Health Overview Card -->
+          <div class="domain-scene__idp" id="healthLayer">
+            <section class="idp-layout idp-layout--health">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Health AI</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">AI-Powered Medical System</span>
+                </div>
+                <div class="idp-topbar-right">2024</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    HEALTH
+                    <span class="idp-heading-sub">AI Systems</span>
+                  </h2>
+                  <p class="idp-para">
+                    Developed a medical risk assessment framework for insurance underwriting using 
+                    Vision Transformers and Claude Sonnet 3 to analyze diagnostic reports and medical 
+                    images.Rather then creating a pipeline, I have experiemented and created the firt
+                    type of LLM's called the "Directional LLM's", where The LLM is supported with a 
+                    ML model it could be from a simple class to a treshold, which gives the LLM, to 
+                    think in that direction and verify/validate/justify the decision.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Input</h4>
+                      <p>ECGs, TMT reports, chest X-rays, medical records, and patient history.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>Medical Documents & Images → ViT-based Classification → Claude Sonnet 3 Reasoning → Condition Identification → Risk Assessment Report.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Focus</h4>
+                      <p>Assisted underwriters in evaluating medical risk and making more consistent 
+                        insurance approval and premium decisions.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Health • AI systems</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Health_systems_1.png" alt="Health AI systems preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Haelth_Systems_2.png" alt="Health AI systems result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- FRONT WORDS -->
+          <div class="domain-scene__words" id="healthWordsGroup">
+            <span class="domain-word" id="hsCare">CARE</span>
+            <span class="domain-word" id="hsHealth">HEALTH</span>
+            <span class="domain-word" id="hsSupply">Supply Chain Management</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HEALTH HORIZONTAL SCROLL (6 projects) ================= -->
+    <section class="hscroll-section" id="healthHscroll">
+      <div class="hscroll-sticky">
+        <div class="hscroll-track" id="healthTrack">
+
+          <!-- SLIDE 1: Eye Disease Detection -->
+          <div class="hscroll-slide">
+            <section class="idp-layout">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Health Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Eye Disease Detection</span>
+                </div>
+                <div class="idp-topbar-right">2025</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Eye
+                    <span class="idp-heading-sub">Disease CNN</span>
+                  </h2>
+                  <p class="idp-para">
+                    Deep learning classifier for diabetic retinopathy and glaucoma
+                    detection from fundus images — trained on 90k+ scans, achieving
+                    94% AUC with explainable Grad-CAM heatmaps for clinical review.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Data</h4>
+                      <p>APTOS, EyePACS, custom augmented sets.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Model</h4>
+                      <p>EfficientNet-B4 + Grad-CAM explainability layer.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>94% AUC, 3× faster screening vs. manual review.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Health • Diagnostics</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/EYE_Disease_1.png" alt="Eye disease fundus scan">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/EYE_Disease_2.png" alt="Eye disease detection result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 2: Gaze Analytics -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--forgery">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Sampling</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Health Pools</span>
+                </div>
+                <div class="idp-topbar-right">2025</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Synthetic Healthcare 
+                    <span class="idp-heading-sub">Data Generation</span>
+                  </h2>
+                  <p class="idp-para">
+                   Created synthetic healthcare datasets using GANs and YData Synthetic 
+                   to generate realistic patient profiles while preserving privacy. 
+                   Formed patient clusters that replicated real-world disease patterns,
+                    demographics, and clinical trends for downstream AI/ML applications.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Input</h4>
+                      <p>Patient demographics, medical history, lab results, vitals, 
+                        diagnoses, and treatment records.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>Data Preprocessing → Patient Clustering → GAN/YData Synthetic Generation → 
+                        Statistical Validation → Synthetic Dataset Creation.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Enabled privacy-safe healthcare analytics, expanded limited datasets, 
+                        and improved AI model development by providing realistic synthetic patient 
+                        populations that closely matched real-world trends.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Health • Accessibility</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Synthetic_1.png" alt="Synthetic data generation preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Synthetic_2.png" alt="Synthetic patient data output">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 3: Posture & Fatigue Monitor -->
+          <div class="hscroll-slide">
+            <section class="idp-layout">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Cardiac Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Heart Disease</span>
+                </div>
+                <div class="idp-topbar-right">2025</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Heart Disease 
+                    <span class="idp-heading-sub">Prediction</span>
+                  </h2>
+                  <p class="idp-para">
+                    Developed a machine learning framework to predict the likelihood 
+                    of heart disease using patient clinical and lifestyle data, enabling 
+                    early risk identification and preventive healthcare interventions.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Input</h4>
+                      <p>Age, gender, blood pressure, cholesterol levels, ECG results, 
+                        heart rate, chest pain type, blood sugar levels, smoking history,
+                         and other clinical indicators.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>Data Preprocessing → Missing Value Treatment & Feature Engineering → 
+                        Exploratory Data Analysis → Feature Selection → Model Training 
+                        (Random Forest, XGBoost, Logistic Regression) → Hyperparameter Tuning → 
+                        Risk Prediction & Evaluation.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Improved early detection of high-risk patients, supported
+                        clinical decision-making, reduced manual risk assessment
+                         effort, and enabled proactive treatment planning through data-driven insights.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Health • Cardiac</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Heart_Disease_1.png" alt="Heart disease prediction preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Heart_disease_2.png" alt="Heart disease prediction result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 4: Medical Image Segmentation -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--health">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Diabetes Case study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Medical classification</span>
+                </div>
+                <div class="idp-topbar-right">2025</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Diabetes 
+                    <span class="idp-heading-sub">Prediction</span>
+                  </h2>
+                  <p class="idp-para">
+                    Built a machine learning model to predict the risk of diabetes
+                     using patient health and lifestyle indicators, helping identify 
+                     high-risk individuals at an early stage.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Data</h4>
+                      <p>Public healthcare datasets from sources such as the National 
+                        Institute of Diabetes and Digestive and Kidney Diseases 
+                        (Pima Indians Diabetes Dataset), Centers for Disease Control 
+                        and Prevention health datasets, and patient health records 
+                        containing glucose levels, BMI, age, blood pressure, insulin l
+                        evels, family history, and pregnancy-related factors.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Model</h4>
+                      <p>Logistic Regression, Random Forest, XGBoost, Support Vector
+                         Machines (SVM), and Neural Networks for classification and 
+                         risk scoring.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Enabled early identification of at-risk individuals, supported preventive 
+                        healthcare initiatives, improved clinical decision-making, and facilitated 
+                        targeted lifestyle and treatment interventions to reduce the progression of 
+                        diabetes-related complications.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Health •  AI</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Diabetes_1.png" alt="Diabetes prediction preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Diabetes_2.png" alt="Diabetes prediction result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- SLIDE 5: rPPG Vital Signs -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--forgery">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">COVID-19 Strain Analysis</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Viral Genome Comparison</span>
+                </div>
+                <div class="idp-topbar-right">2023</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    RNA 
+                    <span class="idp-heading-sub">Genome Comparison</span>
+                  </h2>
+                  <p class="idp-para">
+                    Developed a bioinformatics and machine learning framework to analyze COVID-19 RNA
+                     sequences and compare emerging viral strains against known viruses such as SARS-CoV,
+                      MERS-CoV, and Ebola. Leveraged sequence analysis, structural biology tools, and 
+                      statistical pattern recognition to identify genetic similarities, mutations, and 
+                      evolutionary relationships, enabling better understanding of novel viral behavior 
+                      and potential risks.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Input</h4>
+                      <p>PDB gene/protein structure files, viral RNA sequences, mutation datasets, 
+                        and genomic data from sources such as National Center for Biotechnology 
+                        Information, Global Initiative on Sharing All Influenza Data, and Protein Data Bank.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Pipeline</h4>
+                      <p>
+                        Sequence Processing (BioPython) → Similarity & Mutation Analysis → 
+                        Structure Prediction (AlphaFold) → Pattern Comparison & Visualization.
+                      </p>
+                         
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Identified evolutionary relationships between viral strains, 
+                        highlighted mutation hotspots and structural similarities, and supported 
+                        faster biological interpretation of new variants for research and public
+                         health decision-making.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Health • Biometrics</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/RNA_1.png" alt="RNA genome comparison preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/RNA_2.png" alt="Viral strain analysis result">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SUPPLY CHAIN DOMAIN SCENE ================= -->
+    <section class="domain-scene" id="schainScene">
+      <div class="domain-scene__sticky">
+        <div class="domain-scene__wrap">
+
+          <!-- BACK LAYER: Supply Chain Project Card -->
+          <div class="domain-scene__idp" id="schainLayer">
+            <section class="idp-layout idp-layout--schain">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Logistics Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Supply Chain </span>
+                </div>
+                <div class="idp-topbar-right">2026</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    FMCG Supply Chain 
+                    <span class="idp-heading-sub">Intelligence & Consumer Behavior Analysis</span>
+                  </h2>
+                  <p class="idp-para">
+                    Worked on analyzing FMCG supply chain operations and consumer purchasing behavior 
+                    to understand product movement, demand patterns, logistics efficiency, and customer 
+                    preferences. Designed and analyzed surveys to capture behavioral trends, purchasing 
+                    decisions, inventory movement, and end-to-end logistics flow across the FMCG product 
+                    lifecycle. Additionally, developed recommendation systems to improve product placement, 
+                    demand forecasting, and customer engagement.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Scope</h4>
+                      <p>Studied the complete FMCG product lifecycle from procurement, manufacturing, warehousing, 
+                        and distribution to retail sales and customer consumption. Analyzed consumer behavior, logistics 
+                        bottlenecks, inventory movement, and product demand patterns to support data-driven supply chain decisions.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Stack</h4>
+                      <p>Python, Pandas, NumPy, Scikit-Learn, SQL, Power BI/Tableau, Survey Analytics, Recommendation 
+                        Systems (Collaborative & Content-Based Filtering), Statistical Analysis, Data Visualization, 
+                        and Supply Chain KPI Monitoring.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>Identified consumer buying patterns and logistics inefficiencies, improved visibility across the FMCG
+                         supply chain, enabled data-driven inventory and distribution planning, and developed recommendation 
+                         models that enhanced product discovery, customer engagement, and demand alignment.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Logistics • Forecasting</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/FMCG_1.png" alt="FMCG supply chain dashboard">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/FMCG_2.png" alt="FMCG consumer behavior analysis">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- FRONT WORDS -->
+          <div class="domain-scene__words" id="schainWordsGroup">
+            <span class="domain-word" id="scSupply">SUPPLY</span>
+            <span class="domain-word" id="scChain">CHAIN</span>
+            <span class="domain-word" id="scMgmt">MGMT</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SUPPLY CHAIN HORIZONTAL SCROLL (1 project) ================= -->
+    <section class="hscroll-section" id="schainHscroll">
+      <div class="hscroll-sticky">
+        <div class="hscroll-track" id="schainTrack">
+
+          <!-- SLIDE 1: Demand Forecasting & Inventory Optimisation -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--schain">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Supply Chain Case Study</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Demand Forecasting</span>
+                </div>
+                <div class="idp-topbar-right">2026</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Demand
+                    <span class="idp-heading-sub">Forecasting</span>
+                  </h2>
+                  <p class="idp-para">
+                    End-to-end demand forecasting and inventory replenishment system —
+                    ingests POS, warehouse, and supplier lead-time data to predict
+                    SKU-level demand 12 weeks ahead, auto-triggering reorder signals
+                    when safety stock thresholds are breached.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Data</h4>
+                      <p>POS logs, warehouse stock, supplier SLAs, weather.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Models</h4>
+                      <p>LSTM + XGBoost ensemble, anomaly detection layer.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Impact</h4>
+                      <p>40% fewer stockouts, 25% reduction in overstock cost.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Logistics • ML Forecasting</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Forecasting_1.png" alt="Demand forecasting dashboard">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Forecasting_2.png" alt="Inventory replenishment output">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RESEARCH DOMAIN SCENE ================= -->
+    <section class="domain-scene" id="resScene">
+      <div class="domain-scene__sticky">
+        <div class="domain-scene__wrap">
+
+          <!-- BACK LAYER: Research Overview Card -->
+          <div class="domain-scene__idp" id="resLayer">
+            <section class="idp-layout idp-layout--research">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title"> Research</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Medical Diagnosis</span>
+                </div>
+                <div class="idp-topbar-right">2024–2026</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Directional
+                    <span class="idp-heading-sub">LLM's</span>
+                  </h2>
+                  <p class="idp-para">
+               Pioneered and experimentally validated the concept of Directional LLMs, a novel framework demonstrating
+                that Large Language Models achieve substantially higher predictive accuracy when provided with an explicit
+                 reasoning direction prior to inference. Introduced the use of Vision Transformer (ViT)-generated directional 
+                 labels and structured contextual cues to guide model reasoning toward clinically relevant decision pathways. 
+                 Through extensive experimentation on medical diagnosis tasks, established that directional guidance can transform
+                 model performance from approximately 66% to 99% AUC-ROC, proving that targeted reasoning signals significantly enhance
+                  prediction quality compared to conventional prompting approaches.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Areas</h4>
+                      <p>Implemented and evaluated in medical diagnosis workflows involving ECG reports, pathology reports, 
+                        clinical notes, radiology findings, and patient health records, where contextual guidance was used to 
+                        steer model reasoning toward specific diagnostic objectives.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Output</h4>
+                      <p>A framework that augments LLM inference with directional signals, producing more accurate disease
+                        classification, risk assessment, diagnostic recommendations, and clinically relevant explanations 
+                        compared to conventional prompting approaches.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Goal</h4>
+                      <p>To improve the reliability, interpretability, and predictive accuracy of LLMs in high-stakes healthcare 
+                        applications by guiding model reasoning through structured contextual cues rather than relying solely on
+                         zero-shot or generic prompting strategies.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Research • AI</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Dllms_1.png" alt="Directional LLMs research preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Dllms_2.png" alt="Directional LLMs results">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- FRONT WORDS -->
+          <div class="domain-scene__words" id="resWordsGroup">
+            <span class="domain-word" id="resData">DATA</span>
+            <span class="domain-word" id="resMain">RESEARCH</span>
+            <span class="domain-word" id="resPaper">PAPER</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RESEARCH HORIZONTAL SCROLL (4 projects) ================= -->
+    <section class="hscroll-section" id="resHscroll">
+      <div class="hscroll-sticky">
+        <div class="hscroll-track" id="resTrack">
+
+          <!-- SLIDE 1: Gaze-based HCI -->
+          <div class="hscroll-slide">
+            <section class="idp-layout idp-layout--research">
+              <div class="idp-topbar">
+                <div class="idp-topbar-left">
+                  <span class="idp-topbar-title">Research</span>
+                  <span class="idp-topbar-arrow">→</span>
+                  <span class="idp-topbar-name">Superposition/Quantum Annealing</span>
+                </div>
+                <div class="idp-topbar-right">2025-Present</div>
+              </div>
+              <div class="idp-grid">
+                <div class="idp-left">
+                  <h2 class="idp-heading">
+                    Quantum-Inspired
+                    <span class="idp-heading-sub"> Neural Optimization</span>
+                  </h2>
+                  <p class="idp-para">
+                    Conducting ongoing research into a quantum-inspired optimization framework that 
+                    models neural network initialization as a superposition of multiple candidate 
+                    parameter states, enabling the simultaneous exploration of diverse learning 
+                    trajectories. The hypothesis is that maintaining multiple optimization pathways 
+                    during training can improve the likelihood of converging toward higher-quality 
+                    minima compared to conventional single-initialization gradient-based learning.
+                  </p>
+                  <div class="idp-columns">
+                    <div class="idp-col">
+                      <h4>Method</h4>
+                      <p>Designed a conceptual framework where multiple weight initialization states are maintained 
+                        as a probabilistic state space rather than a single starting point. During training, candidate 
+                        trajectories are evaluated and dynamically weighted based on optimization performance, drawing 
+                        inspiration from quantum concepts such as superposition, state collapse, and amplitude amplification. 
+                        Current work focuses on implementing classical approximations of these principles and benchmarking 
+                        them against traditional optimization techniques such as SGD, Adam, and population-based approaches.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Metrics</h4>
+                      <p>Convergence Rate, Training Stability, Loss Landscape Exploration, Final Validation Accuracy,
+                         AUC-ROC, Generalization Performance, Computational Overhead, and Distance-to-Minima Analysis 
+                         across multiple training runs.</p>
+                    </div>
+                    <div class="idp-col">
+                      <h4>Finding</h4>
+                      <p>Early experiments indicate that maintaining multiple candidate optimization pathways may improve exploration
+                         of the loss landscape and reduce sensitivity to poor initializations. Initial results suggest potential 
+                         improvements in convergence consistency and solution quality; however, extensive validation across diverse 
+                         architectures and datasets is still ongoing. Current efforts are focused on formalizing the optimization strategy, 
+                         quantifying trade-offs between computational cost and performance gains, and evaluating its applicability to deep 
+                         learning and healthcare AI problems.</p>
+                    </div>
+                  </div>
+                  <div class="idp-footer">
+                    <span>@aaronjoshua</span>
+                    <span>aaronjoshua.dev</span>
+                    <span>Research • HCI</span>
+                  </div>
+                </div>
+                <div class="idp-right">
+                  <div class="idp-img idp-img--top">
+                    <img src="/images/Quantum_1.png" alt="Quantum-inspired optimization preview">
+                  </div>
+                  <div class="idp-img idp-img--bottom">
+                    <img src="/images/Quantum_2.png" alt="Neural optimization results">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSING STATEMENT ================= -->
+    <section class="projects-closing" id="projectsClosing">
+      <p class="projects-closing__line" id="closingLine1"></p>
+      <p class="projects-closing__line projects-closing__line--sub" id="closingLine2"></p>
+    </section>
+
+  </main>
+
+  <!-- ================= STATIC FOOTER ================= -->
+  <%- include("partials/footer") %>
+
+  <script src="/JS/main.js"></script>
+</body>
+</html>

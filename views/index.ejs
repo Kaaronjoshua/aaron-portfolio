@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aaron Kambhampati — Data Scientist & AI Engineer based in India. Building intelligent systems, ML pipelines, and data-driven products.">
+  <title>Aaron Kambhampati — Portfolio</title>
+
+  <!-- Font Awesome for social logos -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER PARTIAL (home is active) -->
+  <%- include("partials/header", { page: "home" }) %>
+
+  <!-- HERO: SPLIT BG, SINGLE WORD (COLOR SWITCHES BY SIDE) -->
+  <section class="hero hero-split">
+    <!-- background halves -->
+    <div class="bg-half bg-left"></div>
+    <div class="bg-half bg-right"></div>
+
+    <!-- Portrait Layer 3: behind "portfolio" text -->
+    <div class="portrait-svg-layer" id="svg-layer3">
+      <img src="/images/svgs/layer_3.svg" alt="">
+    </div>
+
+    <!-- left half of the word (dark on light) -->
+    <div class="portfolio-stack stack-left">
+      <span class="portfolio-layer layerA3">AARON</span>
+      <span class="portfolio-layer layerA2">AARON</span>
+      <span class="portfolio-layer layerA1">AARON</span>
+      <span class="portfolio-layer layerMain">AARON</span>
+      <span class="portfolio-layer layerB1">AARON</span>
+      <span class="portfolio-layer layerB2">AARON</span>
+      <span class="portfolio-layer layerB3">AARON</span>
+    </div>
+
+    <!-- right half of the word (light on dark) -->
+    <div class="portfolio-stack stack-right">
+      <span class="portfolio-layer layerA3">AARON</span>
+      <span class="portfolio-layer layerA2">AARON</span>
+      <span class="portfolio-layer layerA1">AARON</span>
+      <span class="portfolio-layer layerMain">AARON</span>
+      <span class="portfolio-layer layerB1">AARON</span>
+      <span class="portfolio-layer layerB2">AARON</span>
+      <span class="portfolio-layer layerB3">AARON</span>
+    </div>
+
+    <!-- Portrait Layer 1: base outline, always visible, above "portfolio" text -->
+    <div class="portrait-svg-layer" id="svg-layer1">
+      <img src="/images/svgs/Layer_1.svg" alt="">
+    </div>
+
+    <!-- Portrait Layer 2: colored reveal, above "portfolio" text -->
+    <div class="portrait-svg-layer" id="svg-layer2">
+      <img src="/images/svgs/Layer_2.svg" alt="">
+    </div>
+
+    <!-- Transparent mouse-capture surface -->
+    <div id="portrait-canvas"></div>
+
+    <!-- Custom cursor ring -->
+    <div id="portrait-cursor-ring"></div>
+  </section>
+
+  <!-- FOOTER PARTIAL -->
+  <%- include("partials/footer") %>
+
+  <!-- Main JS -->
+  <script src="/JS/main.js"></script>
+</body>
+</html>

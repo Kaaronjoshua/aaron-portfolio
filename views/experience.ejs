@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aaron Kambhampati's professional experience as a Data Scientist at LUMIQ.AI and founder of Minds & Machines — a structured AI learning community.">
+  <title>Experience — Aaron Kambhampati</title>
+
+  <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"/>
+  <link rel="stylesheet" href="/styles/styles.css">
+
+  <!-- D3 + TopoJSON -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+
+  <style>
+    /* ── GLOBAL OVERRIDE FOR DARK THEME ── */
+    body {
+      background: #000;
+    }
+
+    .header-bar {
+      background: #000;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-bar .left,
+    .header-bar a.left,
+    .header-bar .right {
+      color: rgba(255,255,255,0.4);
+    }
+
+    .top-nav a {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .top-nav a.active {
+      color: #fff;
+      font-weight: 700;
+      border-bottom-color: #fff;
+    }
+
+    .top-nav a:hover {
+      color: #fff;
+      opacity: 1;
+    }
+
+    .footer-strip {
+      background: #000;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.2);
+    }
+
+    .social-icons a {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { color: rgba(255,255,255,0.6); }
+      .top-nav {
+        background: #111;
+        border-bottom-color: rgba(255,255,255,0.08);
+      }
+      .top-nav a          { border-bottom-color: rgba(255,255,255,0.06); }
+      .top-nav a.active   { border-left-color: #fff; }
+    }
+
+    /* ── EXPERIENCE PAGE ── */
+    .experience-page {
+      background: #000;
+      color: #fff;
+    }
+
+    /* first viewport screen (height set by JS) */
+    .exp-screen-1 {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Title strip */
+    .exp-header {
+      padding: 42px 80px 18px;
+      flex-shrink: 0;
+    }
+
+    .exp-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin: 0 0 8px;
+    }
+
+    .exp-title {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -3px;
+      margin: 0 0 10px;
+    }
+
+    .exp-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+      margin: 0;
+    }
+
+    /* Map area fills remaining space */
+    .exp-map-wrap {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+    }
+
+    #world-map {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ── SVG MAP STYLES ── */
+    .sphere-bg {
+      fill: #000;
+    }
+
+    .sphere-border {
+      fill: none;
+      stroke: rgba(255,255,255,0.08);
+      stroke-width: 1px;
+    }
+
+    .graticule {
+      fill: none;
+      stroke: rgba(255,255,255,0.04);
+      stroke-width: 0.5px;
+    }
+
+    .country {
+      fill: #fff;
+      stroke: #3a3a3a;
+      stroke-width: 0.4px;
+      transition: fill 0.2s;
+    }
+
+    /* ── BEACONS ── */
+    .beacon-g {
+      cursor: pointer;
+    }
+
+    .beacon-g:hover .beacon-dot {
+      r: 5px;
+    }
+
+    .beacon-dot {
+      fill: #ebb30a;
+      transition: r 0.15s;
+    }
+
+    /* Two staggered pulse rings */
+    .beacon-ring {
+      fill: none;
+      stroke: rgba(237, 164, 6, 0.65);
+      stroke-width: 1.2px;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: beaconPulse 2.4s ease-out infinite;
+    }
+
+    .beacon-ring-b {
+      animation-delay: -1.2s;
+    }
+
+    @keyframes beaconPulse {
+      0%   { transform: scale(1); opacity: 0.75; }
+      100% { transform: scale(5); opacity: 0;    }
+    }
+
+    /* City label (shown below beacon) */
+    .beacon-label {
+      fill: #ADFF2F;
+      font-size: 8.5px;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      letter-spacing: 0.09em;
+      text-anchor: middle;
+      text-transform: uppercase;
+      pointer-events: none;
+      transition: fill 0.2s;
+    }
+
+    .beacon-g:hover .beacon-label,
+    .beacon-g.selected .beacon-label {
+      fill: #BFFF58;
+    }
+
+    /* Active beacon gets a brighter core */
+    .beacon-g.selected .beacon-dot {
+      fill: #39FF14;
+      r: 5px;
+    }
+
+    .beacon-g.selected .beacon-ring {
+      stroke: rgba(57, 255, 20, 0.9);
+    }
+
+    /* ── INFO CARD ── */
+    .exp-card {
+      position: fixed;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%) translateY(28px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.32s ease, transform 0.32s ease;
+      width: min(500px, 90vw);
+      background: rgba(8, 8, 8, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 26px 30px 22px;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      z-index: 300;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    }
+
+    .exp-card.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: all;
+    }
+
+    .exp-card-city {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin: 0 0 10px;
+    }
+
+    .exp-card-company {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 0 0 5px;
+      color: #fff;
+    }
+
+    .exp-card-role {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 10px;
+    }
+
+    .exp-card-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.35);
+      margin: 0 0 16px;
+    }
+
+    .exp-card-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin: 0 0 14px;
+    }
+
+    .exp-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .exp-card-period {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.32);
+      margin: 0;
+    }
+
+    .exp-card-tag {
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      padding: 2px 9px;
+      display: none;
+    }
+
+    .exp-card-tag.visible {
+      display: inline-block;
+    }
+
+    .exp-card-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+
+    .exp-card-close:hover {
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+    }
+
+    /* ── TIMELINE SLIDER ── */
+    .exp-timeline {
+      padding: 0 80px 18px;
+      flex-shrink: 0;
+    }
+
+    .timeline-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin: 0 0 10px;
+    }
+
+    .year-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      outline: none;
+      cursor: grab;
+      margin: 0;
+      display: block;
+      /* initial background set by JS */
+      background: rgba(255,255,255,0.12);
+    }
+
+    .year-slider:active { cursor: grabbing; }
+
+    /* Chrome/Safari thumb */
+    .year-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: grab;
+      margin-top: -8px;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.14), 0 2px 10px rgba(0,0,0,0.55);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .year-slider:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.22);
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.18), 0 2px 14px rgba(0,0,0,0.6);
+    }
+
+    /* Firefox thumb */
+    .year-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      cursor: grab;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.14);
+    }
+
+    .year-slider::-moz-range-track {
+      height: 2px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px;
+    }
+
+    .year-slider::-moz-range-progress {
+      height: 2px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 2px;
+    }
+
+    /* Year tick labels */
+    .year-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 9px;
+    }
+
+    .year-tick {
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      color: rgba(255,255,255,0.18);
+      transition: color 0.3s, font-weight 0.1s;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      user-select: none;
+    }
+
+    .year-tick.active {
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+    }
+
+    /* Beacon hidden state */
+    .beacon-g {
+      transition: opacity 0.45s ease;
+    }
+
+    .beacon-g.hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* ── MINDS & MACHINES COMMUNITY ── */
+    .mm-section {
+      background: #06071a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 90px 80px 70px;
+    }
+
+    .mm-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 56px;
+    }
+
+    .mm-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin: 0 0 18px;
+    }
+
+    .mm-title {
+      font-size: 68px;
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -3px;
+      margin: 0 0 28px;
+      color: #fff;
+    }
+
+    .mm-title em {
+      font-style: normal;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .mm-stats {
+      display: flex;
+      gap: 28px;
+    }
+
+    .mm-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mm-stat-num {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .mm-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.5;
+    }
+
+    .mm-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      margin: 0 0 32px;
+    }
+
+    .mm-join-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+
+    .mm-join-btn:hover {
+      background: #e6e6e6;
+      transform: translateY(-2px);
+    }
+
+    .mm-join-arrow {
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+
+    .mm-join-btn:hover .mm-join-arrow {
+      transform: translateX(3px);
+    }
+
+    /* ── ROADMAP MINI-WINDOW ── */
+    .mm-roadmap-wrap {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 26px 26px 22px;
+      margin-bottom: 40px;
+    }
+
+    .mm-roadmap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .mm-roadmap-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .mm-roadmap-nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .rm-arrow {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      line-height: 1;
+    }
+
+    .rm-arrow:hover:not(:disabled) {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.22);
+      color: #fff;
+    }
+
+    .rm-arrow:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+
+    .mm-roadmap-viewport {
+      overflow: hidden;
+      cursor: grab;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .mm-roadmap-viewport.is-dragging {
+      cursor: grabbing;
+    }
+
+    .mm-roadmap-track {
+      display: flex;
+      gap: 14px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .rm-card {
+      flex: 0 0 240px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 20px 18px 16px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .rm-card:hover {
+      background: rgba(255,255,255,0.065);
+      border-color: rgba(255,255,255,0.13);
+    }
+
+    .rm-card-num {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.18);
+      margin: 0 0 7px;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+
+    .rm-card-name {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #fff;
+      margin: 0 0 13px;
+    }
+
+    .rm-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .rm-topic {
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.38);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 3px 8px;
+    }
+
+    .rm-progress {
+      display: flex;
+      gap: 5px;
+      margin-top: 18px;
+    }
+
+    .rm-progress-dot {
+      height: 2px;
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+
+    .rm-progress-dot.active {
+      background: rgba(255,255,255,0.55);
+    }
+
+    /* ── ROLES ROW ── */
+    .mm-roles {
+      text-align: center;
+      padding-top: 4px;
+    }
+
+    .mm-roles-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+      margin: 0 0 14px;
+    }
+
+    .mm-role-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mm-role-tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.42);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      padding: 5px 14px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .mm-role-tag:hover {
+      border-color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── JOIN MODAL ── */
+    .mm-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mm-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mm-modal {
+      background: rgba(10,10,10,0.98);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      padding: 36px 40px 32px;
+      width: min(460px, 90vw);
+      position: relative;
+      transform: scale(0.94) translateY(12px);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    }
+
+    .mm-overlay.show .mm-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .mm-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+
+    .mm-modal-close:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+    .mm-modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 5px;
+    }
+
+    .mm-modal-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      margin: 0 0 28px;
+    }
+
+    .mm-field {
+      margin-bottom: 16px;
+    }
+
+    .mm-field label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 7px;
+    }
+
+    .mm-field input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+
+    .mm-field input::placeholder { color: rgba(255,255,255,0.18); }
+    .mm-field input:focus { border-color: rgba(255,255,255,0.28); }
+
+    .mm-submit {
+      width: 100%;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+
+    .mm-submit:hover { background: #e6e6e6; }
+
+    .mm-success {
+      text-align: center;
+      padding: 20px 0 8px;
+      display: none;
+    }
+
+    .mm-success-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .mm-success h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 6px;
+    }
+
+    .mm-success p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <%- include("partials/header", { page: "experience" }) %>
+
+  <main class="page-content experience-page">
+
+    <!-- ── SCREEN 1: map + timeline ── -->
+    <div class="exp-screen-1" id="expScreen1">
+
+      <div class="exp-header">
+        <p class="exp-label">Professional Journey</p>
+        <h1 class="exp-title">Experience</h1>
+        <p class="exp-hint">Click a beacon · scroll for more</p>
+      </div>
+
+      <!-- ── TIMELINE SLIDER ── -->
+      <div class="exp-timeline">
+        <p class="timeline-eyebrow">Drag to travel through time</p>
+        <input type="range" id="yearSlider" class="year-slider" min="2023" step="1">
+        <div class="year-labels" id="yearLabels"></div>
+      </div>
+
+      <div class="exp-map-wrap">
+        <svg id="world-map"></svg>
+      </div>
+
+    </div>
+
+    <!-- ── SCREEN 2: Minds & Machines community ── -->
+    <section class="mm-section">
+
+      <!-- TOP: 2-col intro -->
+      <div class="mm-intro">
+        <div class="mm-left">
+          <p class="mm-eyebrow">Community · Teaching · Mentorship</p>
+          <h2 class="mm-title">Minds <em>&</em><br>Machines</h2>
+          <div class="mm-stats">
+            <div class="mm-stat">
+              <span class="mm-stat-num">50+</span>
+              <span class="mm-stat-label">Projects</span>
+            </div>
+            <div class="mm-stat">
+              <span class="mm-stat-num">2x</span>
+              <span class="mm-stat-label">Assignments<br>/ Week</span>
+            </div>
+            <div class="mm-stat">
+              <span class="mm-stat-num">1x</span>
+              <span class="mm-stat-label">Mock Interview<br>/ Month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-right">
+          <p class="mm-desc">
+            A structured, rigorous community where students go from zero to
+            industry-ready. Every week brings new projects and assignments.
+            Every month, a real mock interview that sharpens your edge.
+            By the end, you don't just know the theory — you have the portfolio,
+            the confidence, and the interview reps to prove it.
+          </p>
+          <button class="mm-join-btn" id="mmJoinBtn">
+            Join Now <span class="mm-join-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ROADMAP MINI-WINDOW -->
+      <div class="mm-roadmap-wrap">
+        <div class="mm-roadmap-header">
+          <span class="mm-roadmap-label">Curriculum Roadmap</span>
+          <div class="mm-roadmap-nav">
+            <button class="rm-arrow" id="rmPrev" disabled>←</button>
+            <button class="rm-arrow" id="rmNext">→</button>
+          </div>
+        </div>
+        <div class="mm-roadmap-viewport" id="rmViewport">
+          <div class="mm-roadmap-track" id="rmTrack">
+
+            <div class="rm-card">
+              <p class="rm-card-num">01</p>
+              <h3 class="rm-card-name">Math & Foundations</h3>
+              <div class="rm-topics">
+                <span class="rm-topic">Linear Algebra</span>
+                <span class="rm-topic">Calculus</span>
+                <span class="rm-topic">Probability</span>
+                <span class="rm-topic">Statistics</span>
+                <span class="rm-topic">Information Theory</span>
+                <span class="rm-topic">Optimization</span>
+              </div>
+            </div>
+
+            <div class="rm-card">
+              <p class="rm-card-num">02</p>
+              <h3 class="rm-card-name">EDA & Analytics</h3>
+              <div class="rm-topics">
+                <span class="rm-topic">Pandas</span>
+                <span class="rm-topic">NumPy</span>
+                <span class="rm-topic">Matplotlib</span>
+                <span class="rm-topic">Seaborn</span>
+                <span class="rm-topic">Feature Engineering</span>
+                <span class="rm-topic">Hypothesis Testing</span>
+                <span class="rm-topic">Statistical Inference</span>
+              </div>
+            </div>
+
+            <div class="rm-card">
+              <p class="rm-card-num">03</p>
+              <h3 class="rm-card-name">Machine Learning</h3>
+              <div class="rm-topics">
+                <span class="rm-topic">Regression</span>
+                <span class="rm-topic">Classification</span>
+                <span class="rm-topic">Clustering</span>
+                <span class="rm-topic">SVM</span>
+                <span class="rm-topic">XGBoost</span>
+                <span class="rm-topic">Ensemble Methods</span>
+                <span class="rm-topic">Model Selection</span>
+              </div>
+            </div>
+
+            <div class="rm-card">
+              <p class="rm-card-num">04</p>
+              <h3 class="rm-card-name">Deep Learning</h3>
+              <div class="rm-topics">
+                <span class="rm-topic">ANNs</span>
+                <span class="rm-topic">CNNs</span>
+                <span class="rm-topic">RNNs</span>
+                <span class="rm-topic">LSTMs</span>
+                <span class="rm-topic">Transformers</span>
+                <span class="rm-topic">GANs</span>
+                <span class="rm-topic">Diffusion Models</span>
+                <span class="rm-topic">Transfer Learning</span>
+              </div>
+            </div>
+
+            <div class="rm-card">
+              <p class="rm-card-num">05</p>
+              <h3 class="rm-card-name">MLOps</h3>
+              <div class="rm-topics">
+                <span class="rm-topic">MLflow</span>
+                <span class="rm-topic">Docker</span>
+                <span class="rm-topic">Kubernetes</span>
+                <span class="rm-topic">CI/CD for ML</span>
+                <span class="rm-topic">Model Monitoring</span>
+                <span class="rm-topic">Feature Stores</span>
+                <span class="rm-topic">Cloud Deployment</span>
+              </div>
+            </div>
+
+            <div class="rm-card">
+              <p class="rm-card-num">06</p>
+              <h3 class="rm-card-name">LLMs & Agents</h3>
+              <div class="rm-topics">
+                <span class="rm-topic">Prompt Engineering</span>
+                <span class="rm-topic">RAG</span>
+                <span class="rm-topic">Fine-tuning</span>
+                <span class="rm-topic">LangChain</span>
+                <span class="rm-topic">CrewAI</span>
+                <span class="rm-topic">AutoGen</span>
+                <span class="rm-topic">Agentic AI</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="rm-progress" id="rmProgress">
+          <div class="rm-progress-dot active"></div>
+          <div class="rm-progress-dot"></div>
+          <div class="rm-progress-dot"></div>
+          <div class="rm-progress-dot"></div>
+          <div class="rm-progress-dot"></div>
+          <div class="rm-progress-dot"></div>
+        </div>
+      </div>
+
+      <!-- CAREER ROLES -->
+      <div class="mm-roles">
+        <p class="mm-roles-label">Roles You'll Be Ready For</p>
+        <div class="mm-role-tags">
+          <span class="mm-role-tag">Data Scientist</span>
+          <span class="mm-role-tag">ML Engineer</span>
+          <span class="mm-role-tag">DL Engineer</span>
+          <span class="mm-role-tag">Data Analyst</span>
+          <span class="mm-role-tag">Prompt Engineer</span>
+          <span class="mm-role-tag">AI Researcher</span>
+          <span class="mm-role-tag">NLP Engineer</span>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Info card (fixed, outside scroll context) -->
+  <div class="exp-card" id="expCard">
+    <button class="exp-card-close" id="expCardClose">✕</button>
+    <p class="exp-card-city"    id="cardCity"></p>
+    <h2 class="exp-card-company" id="cardCompany"></h2>
+    <p class="exp-card-role"    id="cardRole"></p>
+    <p class="exp-card-desc"    id="cardDesc"></p>
+    <hr class="exp-card-divider">
+    <div class="exp-card-meta">
+      <p class="exp-card-period" id="cardPeriod"></p>
+      <span class="exp-card-tag" id="cardTag">Innovative Research</span>
+    </div>
+  </div>
+
+  <!-- Join Now modal -->
+  <div class="mm-overlay" id="mmOverlay">
+    <div class="mm-modal">
+      <button class="mm-modal-close" id="mmModalClose">✕</button>
+
+      <div id="mmFormWrap">
+        <h3 class="mm-modal-title">Join Minds & Machines</h3>
+        <p class="mm-modal-sub">Tell us about yourself and we'll be in touch.</p>
+
+        <form id="mmForm">
+          <div class="mm-field">
+            <label for="mmName">Full Name</label>
+            <input type="text" id="mmName" placeholder="Your name" required>
+          </div>
+          <div class="mm-field">
+            <label for="mmEmail">Email</label>
+            <input type="email" id="mmEmail" placeholder="you@email.com" required>
+          </div>
+          <div class="mm-field">
+            <label for="mmProfession">Profession</label>
+            <input type="text" id="mmProfession" placeholder="e.g. Student, Engineer, Researcher" required>
+          </div>
+          <button type="submit" class="mm-submit">Submit →</button>
+        </form>
+      </div>
+
+      <div class="mm-success" id="mmSuccess">
+        <div class="mm-success-icon">✦</div>
+        <h4>You're in.</h4>
+        <p>Welcome to the community. We'll reach out soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <%- include("partials/footer") %>
+
+  <script src="/JS/main.js"></script>
+  <script>
+    /* ── DATA ── */
+    const CITIES = [
+      {
+        id:        "noida",
+        name:      "Noida, India",
+        coords:    [77.391, 28.535],
+        company:   "LUMIQ.AI",
+        role:      "Data Scientist",
+        period:    "Aug 2023 – Present",
+        desc:      "Building ML pipelines, analytics solutions, and data-driven products for enterprise clients across India.",
+        research:  false,
+        startYear: 2023
+      },
+      {
+        id:        "sf",
+        name:      "San Francisco, USA",
+        coords:    [-122.419, 37.773],
+        company:   "Supply Chain for Semi-Conductors",
+        role:      "Research — Global Operations",
+        period:    "2025 – Present",
+        desc:      "Designing intelligent supply chain systems for the semiconductor industry with cross-border logistics intelligence.",
+        research:  true,
+        startYear: 2025
+      },
+      {
+        id:        "pune",
+        name:      "Pune, India",
+        coords:    [73.856, 18.520],
+        company:   "LUMIQ.AI",
+        role:      "Data Scientist",
+        period:    "Aug 2023 – Present",
+        desc:      "End-to-end data science projects — from raw data ingestion to production-ready model deployment.",
+        research:  false,
+        startYear: 2026
+      },
+      {
+        id:        "singapore",
+        name:      "Singapore",
+        coords:    [103.820, 1.352],
+        company:   "Supply Chain for Semi-Conductors",
+        role:      "Research — APAC Operations",
+        period:    "2025 – Present",
+        desc:      "Mapping semiconductor supply flows across Southeast Asia with data-driven demand forecasting models.",
+        research:  true,
+        startYear: 2026
+      }
+    ];
+
+    /* ── TIMELINE STATE ── */
+    const CURRENT_YEAR = new Date().getFullYear();
+    let selectedYear   = CURRENT_YEAR;
+
+    /* ── SLIDER SETUP ── */
+    function initSlider() {
+      const slider   = document.getElementById("yearSlider");
+      const labelsEl = document.getElementById("yearLabels");
+
+      slider.max   = CURRENT_YEAR;
+      slider.value = CURRENT_YEAR;
+
+      // Build year tick labels
+      for (let y = 2023; y <= CURRENT_YEAR; y++) {
+        const span = document.createElement("span");
+        span.className = "year-tick" + (y === CURRENT_YEAR ? " active" : "");
+        span.dataset.year = y;
+        span.textContent  = y;
+        labelsEl.appendChild(span);
+      }
+
+      setSliderFill(slider);
+
+      slider.addEventListener("input", () => {
+        selectedYear = +slider.value;
+        setSliderFill(slider);
+        highlightTick(selectedYear);
+        applyVisibility();
+        // Dismiss card if its city is now hidden
+        const activeCity = d3.select(".beacon-g.selected");
+        if (!activeCity.empty()) {
+          const id   = activeCity.attr("data-id");
+          const city = CITIES.find(c => c.id === id);
+          if (city && selectedYear < city.startYear) closeCard();
+        }
+      });
+    }
+
+    function setSliderFill(slider) {
+      const pct = ((+slider.value - 2023) / (CURRENT_YEAR - 2023)) * 100;
+      slider.style.background =
+        `linear-gradient(to right, rgba(255,255,255,0.75) ${pct}%, rgba(255,255,255,0.12) ${pct}%)`;
+    }
+
+    function highlightTick(year) {
+      document.querySelectorAll(".year-tick").forEach(t => {
+        t.classList.toggle("active", +t.dataset.year === year);
+      });
+    }
+
+    /* ── BEACON VISIBILITY ── */
+    function applyVisibility() {
+      CITIES.forEach(city => {
+        const visible = selectedYear >= city.startYear;
+        d3.select(`#world-map .beacon-g[data-id="${city.id}"]`)
+          .classed("hidden", !visible);
+      });
+    }
+
+    /* ── MAP ── */
+    async function buildMap() {
+      const svg  = d3.select("#world-map");
+      const wrap = document.querySelector(".exp-map-wrap");
+      const W    = wrap.clientWidth;
+      const H    = wrap.clientHeight;
+
+      svg.attr("width", W).attr("height", H);
+
+      const projection = d3.geoNaturalEarth1()
+        .fitExtent([[24, 16], [W - 24, H - 16]], { type: "Sphere" });
+
+      const pathGen = d3.geoPath().projection(projection);
+
+      svg.append("path")
+        .datum({ type: "Sphere" })
+        .attr("class", "sphere-bg")
+        .attr("d", pathGen);
+
+      svg.append("path")
+        .datum(d3.geoGraticule()())
+        .attr("class", "graticule")
+        .attr("d", pathGen);
+
+      const world     = await d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json");
+      const countries = topojson.feature(world, world.objects.countries);
+
+      svg.selectAll(".country")
+        .data(countries.features)
+        .join("path")
+        .attr("class", "country")
+        .attr("d", pathGen);
+
+      svg.append("path")
+        .datum({ type: "Sphere" })
+        .attr("class", "sphere-border")
+        .attr("d", pathGen);
+
+      // Beacons
+      CITIES.forEach(city => {
+        const [px, py] = projection(city.coords);
+
+        const g = svg.append("g")
+          .attr("class", "beacon-g" + (selectedYear < city.startYear ? " hidden" : ""))
+          .attr("transform", `translate(${px},${py})`)
+          .attr("data-id", city.id)
+          .on("click", () => {
+            if (selectedYear >= city.startYear) openCard(city);
+          });
+
+        g.append("circle").attr("class", "beacon-ring").attr("cx", 0).attr("cy", 0).attr("r", 5);
+        g.append("circle").attr("class", "beacon-ring beacon-ring-b").attr("cx", 0).attr("cy", 0).attr("r", 5);
+        g.append("circle").attr("class", "beacon-dot").attr("cx", 0).attr("cy", 0).attr("r", 3.5);
+        g.append("text").attr("class", "beacon-label").attr("x", 0).attr("y", 22).text(city.name);
+      });
+    }
+
+    /* ── INFO CARD ── */
+    function openCard(city) {
+      document.getElementById("cardCity").textContent    = city.name;
+      document.getElementById("cardCompany").textContent = city.company;
+      document.getElementById("cardRole").textContent    = city.role;
+      document.getElementById("cardDesc").textContent    = city.desc || "";
+      document.getElementById("cardPeriod").textContent  = city.period;
+      document.getElementById("cardTag").classList.toggle("visible", city.research);
+      document.getElementById("expCard").classList.add("show");
+
+      d3.selectAll(".beacon-g").classed("selected", false);
+      d3.select(`#world-map .beacon-g[data-id="${city.id}"]`).classed("selected", true);
+    }
+
+    function closeCard() {
+      document.getElementById("expCard").classList.remove("show");
+      d3.selectAll(".beacon-g").classed("selected", false);
+    }
+
+    document.getElementById("expCardClose").addEventListener("click", closeCard);
+    document.getElementById("world-map").addEventListener("click", e => {
+      if (!e.target.closest(".beacon-g")) closeCard();
+    });
+
+    /* ── SCREEN 1 HEIGHT ── */
+    function fitScreen1() {
+      const pc = document.querySelector(".page-content");
+      const s1 = document.getElementById("expScreen1");
+      if (pc && s1) s1.style.height = pc.clientHeight + "px";
+    }
+    fitScreen1();
+
+    /* ── JOIN MODAL ── */
+    const overlay     = document.getElementById("mmOverlay");
+    const formWrap    = document.getElementById("mmFormWrap");
+    const successEl   = document.getElementById("mmSuccess");
+
+    document.getElementById("mmJoinBtn").addEventListener("click", () => {
+      formWrap.style.display   = "block";
+      successEl.style.display  = "none";
+      document.getElementById("mmForm").reset();
+      overlay.classList.add("show");
+    });
+
+    function closeModal() { overlay.classList.remove("show"); }
+
+    document.getElementById("mmModalClose").addEventListener("click", closeModal);
+    overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+    document.getElementById("mmForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      const btn = e.target.querySelector(".mm-submit");
+      btn.disabled = true;
+      btn.textContent = "Submitting…";
+
+      try {
+        const res = await fetch("/api/join", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name:       document.getElementById("mmName").value.trim(),
+            email:      document.getElementById("mmEmail").value.trim(),
+            profession: document.getElementById("mmProfession").value.trim()
+          })
+        });
+        const json = await res.json();
+        if (json.success) {
+          formWrap.style.display  = "none";
+          successEl.style.display = "block";
+          setTimeout(closeModal, 2800);
+        } else {
+          alert("Something went wrong. Please try again.");
+          btn.disabled = false;
+          btn.textContent = "Submit →";
+        }
+      } catch {
+        alert("Network error. Please try again.");
+        btn.disabled = false;
+        btn.textContent = "Submit →";
+      }
+    });
+
+    /* ── ROADMAP CAROUSEL ── */
+    (function () {
+      const viewport = document.getElementById('rmViewport');
+      const track    = document.getElementById('rmTrack');
+      const prevBtn  = document.getElementById('rmPrev');
+      const nextBtn  = document.getElementById('rmNext');
+      const dots     = document.querySelectorAll('.rm-progress-dot');
+      const cards    = track.querySelectorAll('.rm-card');
+
+      const CARD_W  = () => (cards[0] ? cards[0].offsetWidth + 14 : 254);
+      const MAX_IDX = () => Math.max(0, cards.length - Math.floor(viewport.offsetWidth / CARD_W()));
+
+      let idx = 0;
+
+      function go(newIdx) {
+        idx = Math.max(0, Math.min(MAX_IDX(), newIdx));
+        track.style.transform = `translateX(-${idx * CARD_W()}px)`;
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx >= MAX_IDX();
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+
+      prevBtn.addEventListener('click', () => go(idx - 1));
+      nextBtn.addEventListener('click', () => go(idx + 1));
+
+      /* mouse drag */
+      let dragging = false, startX = 0, startIdx = 0;
+
+      viewport.addEventListener('mousedown', e => {
+        dragging = true; startX = e.clientX; startIdx = idx;
+        viewport.classList.add('is-dragging');
+        track.style.transition = 'none';
+      });
+      window.addEventListener('mousemove', e => {
+        if (!dragging) return;
+        const delta = startX - e.clientX;
+        track.style.transform = `translateX(-${Math.max(0, startIdx * CARD_W() + delta)}px)`;
+      });
+      window.addEventListener('mouseup', e => {
+        if (!dragging) return;
+        dragging = false;
+        viewport.classList.remove('is-dragging');
+        track.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)';
+        go(startIdx + Math.round((startX - e.clientX) / CARD_W()));
+      });
+
+      /* touch */
+      viewport.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX; startIdx = idx;
+        track.style.transition = 'none';
+      }, { passive: true });
+      viewport.addEventListener('touchmove', e => {
+        const delta = startX - e.touches[0].clientX;
+        track.style.transform = `translateX(-${Math.max(0, startIdx * CARD_W() + delta)}px)`;
+      }, { passive: true });
+      viewport.addEventListener('touchend', e => {
+        track.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)';
+        go(startIdx + Math.round((startX - e.changedTouches[0].clientX) / CARD_W()));
+      });
+
+      go(0);
+    })();
+
+    /* ── INIT ── */
+    initSlider();
+    buildMap();
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      fitScreen1();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        d3.select("#world-map").selectAll("*").remove();
+        buildMap();
+      }, 200);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<header class="header-bar">
+  <a href="/" class="left">Aaron Kambhampati →</a>
+
+  <nav class="top-nav" id="top-nav">
+    <!-- highlight active page automatically using EJS variable -->
+    <a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About</a>
+    <a href="/projects" class="<%= page === 'projects' ? 'active' : '' %>">Projects</a>
+    <a href="/experience" class="<%= page === 'experience' ? 'active' : '' %>">Experience</a>
+    <a href="/achievements" class="<%= page === 'achievements' ? 'active' : '' %>">Achievements</a>
+    <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a>
+  </nav>
+
+  <div class="right" id="current-date"></div>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
