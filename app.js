@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from "express";
+import rateLimit from "express-rate-limit";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -8,8 +9,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
+app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const formLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: "Too many submissions. Please try again later." },
+});
+app.use("/api/", formLimiter);
 
 // Serve static files
 app.use(express.static(__dirname + "/public"));
