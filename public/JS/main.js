@@ -1,5 +1,10 @@
+// Mobile gets a simplified, static experience — no scroll-jacking or mouse-driven effects
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 // ======================== PORTRAIT REVEAL ========================
 (function () {
+  if (isMobile) return;
+
   const canvas = document.getElementById("portrait-canvas");
   const ring   = document.getElementById("portrait-cursor-ring");
   const layer2 = document.getElementById("svg-layer2");
@@ -187,7 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 1b. Mentoring stat count-up ---
   const statEl = document.querySelector(".mentor-stat");
-  if (statEl) {
+  if (statEl && isMobile) {
+    statEl.textContent = statEl.dataset.target;
+  } else if (statEl) {
     const target = parseInt(statEl.dataset.target, 10);
     const countObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -280,7 +287,7 @@ const health  = document.getElementById("wHealth");
 const adtech  = document.getElementById("wSchain");
 const idp     = document.getElementById("idpLayer");
 
-if (scene && words && finance && health && adtech && idp) {
+if (scene && words && finance && health && adtech && idp && !isMobile) {
   const getScrollTop = () =>
     scrollContainer === window
       ? (document.documentElement.scrollTop || document.body.scrollTop)
@@ -374,7 +381,7 @@ if (scene && words && finance && health && adtech && idp) {
   const hSection = document.getElementById("financeHscroll");
   const track = document.getElementById("financeTrack");
 
-  if (!hSection || !track) return;
+  if (!hSection || !track || isMobile) return;
 
   const getScrollTop = () =>
     scrollContainer === window
@@ -413,7 +420,7 @@ if (scene && words && finance && health && adtech && idp) {
   const hVision = document.getElementById("hsSupply");
   const hLayer  = document.getElementById("healthLayer");
 
-  if (hScene && hWords && hCare && hMain && hVision && hLayer) {
+  if (hScene && hWords && hCare && hMain && hVision && hLayer && !isMobile) {
     const getST   = () => sc === window ? (document.documentElement.scrollTop || document.body.scrollTop) : sc.scrollTop;
     const c01     = v  => Math.min(1, Math.max(0, v));
     const lrp     = (a, b, t) => a + (b - a) * t;
@@ -469,7 +476,7 @@ if (scene && words && finance && health && adtech && idp) {
   const hSect   = document.getElementById("healthHscroll");
   const hTrack  = document.getElementById("healthTrack");
 
-  if (!hSect || !hTrack) return;
+  if (!hSect || !hTrack || isMobile) return;
 
   const getST  = () => sc === window ? (document.documentElement.scrollTop || document.body.scrollTop) : sc.scrollTop;
   const c01    = v => Math.min(1, Math.max(0, v));
@@ -497,7 +504,7 @@ if (scene && words && finance && health && adtech && idp) {
   const sB     = document.getElementById("scMgmt");
   const sLayer = document.getElementById("schainLayer");
 
-  if (sScene && sWords && sA && sMain && sB && sLayer) {
+  if (sScene && sWords && sA && sMain && sB && sLayer && !isMobile) {
     const getST  = () => sc === window ? (document.documentElement.scrollTop || document.body.scrollTop) : sc.scrollTop;
     const c01    = v => Math.min(1, Math.max(0, v));
     const lrp    = (a, b, t) => a + (b - a) * t;
@@ -553,7 +560,7 @@ if (scene && words && finance && health && adtech && idp) {
   const sSect  = document.getElementById("schainHscroll");
   const sTrack = document.getElementById("schainTrack");
 
-  if (!sSect || !sTrack) return;
+  if (!sSect || !sTrack || isMobile) return;
 
   const getST = () => sc === window ? (document.documentElement.scrollTop || document.body.scrollTop) : sc.scrollTop;
   const c01   = v => Math.min(1, Math.max(0, v));
@@ -581,7 +588,7 @@ if (scene && words && finance && health && adtech && idp) {
   const rB     = document.getElementById("resPaper");
   const rLayer = document.getElementById("resLayer");
 
-  if (rScene && rWords && rA && rMain && rB && rLayer) {
+  if (rScene && rWords && rA && rMain && rB && rLayer && !isMobile) {
     const getST  = () => sc === window ? (document.documentElement.scrollTop || document.body.scrollTop) : sc.scrollTop;
     const c01    = v => Math.min(1, Math.max(0, v));
     const lrp    = (a, b, t) => a + (b - a) * t;
@@ -648,6 +655,12 @@ if (scene && words && finance && health && adtech && idp) {
 
   const text1 = "I have done many projects and explored many domains, but these are some of my significant ones, that got me recognised by the world and the AWS community.";
   const text2 = "More coming soon...";
+
+  if (isMobile) {
+    line1.textContent = text1;
+    line2.textContent = text2;
+    return;
+  }
 
   let triggered = false;
 
