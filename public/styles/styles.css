@@ -2241,12 +2241,15 @@ footer {
   /* -- Contact page -- */
   .contact-hero {
     flex-direction: column;
+    flex: none;
   }
 
   .contact-left {
+    flex: none;
     padding: 44px 24px 40px;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    overflow: visible;
   }
 
   .contact-title {
@@ -2255,6 +2258,7 @@ footer {
   }
 
   .contact-right {
+    flex: none;
     padding: 40px 24px 50px;
   }
 
