@@ -1200,6 +1200,7 @@ footer {
   line-height: 0.88;
   margin: 0 0 28px;
   letter-spacing: -2px;
+  white-space: nowrap;
 }
 
 .ach-subtitle {
@@ -2418,7 +2419,7 @@ footer {
   .layerB3 { top: 60px; }
 
   .ach-title {
-    font-size: clamp(36px, 11vw, 52px);
+    font-size: clamp(30px, 9.5vw, 52px);
   }
 
   .certs-grid {
