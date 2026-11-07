@@ -1261,12 +1261,16 @@ footer {
 
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   gap: 20px;
 }
 
+.certs-grid .cert-card { grid-column: span 2; }
+/* centre the second row (cards 5-7) */
+.certs-grid .cert-card:nth-child(5) { grid-column: 2 / span 2; }
+
 .cert-card {
-  background: #fff;
+  background: #fff var(--cert-bg) no-repeat center 14px / var(--cert-bg-size, auto 58%);
   border-radius: 20px;
   padding: 26px 22px 0;
   box-shadow: 0 4px 16px rgba(0,0,0,0.07);
@@ -1332,6 +1336,8 @@ footer {
 .certs-grid .cert-card:nth-child(3) { transition-delay: 0.16s; }
 .certs-grid .cert-card:nth-child(4) { transition-delay: 0.24s; }
 .certs-grid .cert-card:nth-child(5) { transition-delay: 0.32s; }
+.certs-grid .cert-card:nth-child(6) { transition-delay: 0.40s; }
+.certs-grid .cert-card:nth-child(7) { transition-delay: 0.48s; }
 
 /* --- Hackathon --- */
 .hackathon-section {
@@ -2193,6 +2199,8 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
+  .certs-grid .cert-card,
+  .certs-grid .cert-card:nth-child(5) { grid-column: auto; }
 
   /* -- Hackathon -- */
   .hackathon-section {
@@ -2416,6 +2424,8 @@ footer {
   .certs-grid {
     grid-template-columns: 1fr;
   }
+  .certs-grid .cert-card,
+  .certs-grid .cert-card:nth-child(5) { grid-column: auto; }
 
   .cert-card {
     min-height: 220px;
